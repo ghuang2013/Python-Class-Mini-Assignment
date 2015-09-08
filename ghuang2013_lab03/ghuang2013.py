@@ -6,7 +6,6 @@
 
 def eratos(n):
     prime_list = [each_prime for each_prime in range(2, n + 1)]
-
     for key_index, divisor in enumerate(prime_list):
         next_index = key_index + 1
         while next_index < len(prime_list):
@@ -14,7 +13,6 @@ def eratos(n):
                 prime_list.remove(prime_list[next_index])
             else:
                 next_index += 1
-
     return prime_list
 
 

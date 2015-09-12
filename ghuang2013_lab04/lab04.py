@@ -29,15 +29,15 @@ class CityDict(dict):
             print("{:15s} {:10s}".format(key, city_record_reversed[key]))
 
     def get_key(self, niddle, errstr):
-        for kay, value in self.items():
+        for key, value in self.items():
             if value == niddle:
-                return kay
+                return key
         return errstr
 
     def change_key(self, niddle, newvalue, errstr):
-        for kay, value in self.items():
+        for key, value in self.items():
             if value == niddle:
-                self[newvalue] = self.pop(kay)
+                self[newvalue] = self.pop(key)
                 return newvalue
         return errstr
 

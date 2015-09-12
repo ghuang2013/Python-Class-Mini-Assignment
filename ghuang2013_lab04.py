@@ -18,35 +18,25 @@ def read_file(filename):
         file_in = open(filename)
     except FileNotFoundError as e:
         print("Error: ", e.strerror)
-        raise FileNotFoundError
+        quit()
     return file_in
 
 
 def make_dict():
-    try:
-        city_records = dict()
-        file_in = read_file("fl_cities.txt")
-        for line in file_in:
-            zipcode, city = line.rstrip().split(':')
-            city_records[city] = zipcode
-    except FileNotFoundError:
-        print("The system is unable to locate the record file")
-        exit()
-    else:
-        file_in.close()
+    city_records = dict()
+    file_in = read_file("fl_cities.txt")
+    for line in file_in:
+        zipcode, city = line.rstrip().split(':')
+        city_records[city] = zipcode
+    file_in.close()
     return city_records
 
 
 def test_dict(record):
-    try:
-        file_in = read_file("fl_maint.txt")
-        for line in file_in:
-            process_command(line, record)
-    except FileNotFoundError:
-        print("The system is unable to locate test cases")
-        exit()
-    else:
-        file_in.close()
+    file_in = read_file("fl_maint.txt")
+    for line in file_in:
+        process_command(line, record)
+    file_in.close()
 
 
 def print_dict(dict_record):

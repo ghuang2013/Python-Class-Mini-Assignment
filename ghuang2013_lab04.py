@@ -44,9 +44,9 @@ def print_dict(dict_record):
         print_tuple((key, value), 15)
 
 
-def update(dict_record, key, new_val):
+def update(dict_record, key, new_val, errstr):
     if key not in dict_record:
-        return "city unknown"
+        return errstr
     dict_record[key] = new_val
     return new_val
 
@@ -67,7 +67,7 @@ def process_command(line, record):
             print_tuple((args, record.get(args, errstr)), 15)
         elif unity == Command.Change_Zip_Code.value:
             new_zipcode, city_name = args.split(':')
-            print_tuple((city_name, update(record, city_name, new_zipcode)), 15)
+            print_tuple((city_name, update(record, city_name, new_zipcode, errstr)), 15)
         else:
             print("unknown cmd")
     except ValueError as e:
